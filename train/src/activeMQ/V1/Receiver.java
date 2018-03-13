@@ -1,4 +1,4 @@
-package activeMQ;
+package activeMQ.V1;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -23,7 +23,7 @@ public class Receiver {
 		Connection connection = connectionfactory.createConnection();
 		connection.start();
 		// 3 通过connection创建session会话,用于接收消息 配置参数 1是是否启用事务,2配置签收模式
-		Session session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
+		Session session = connection.createSession(Boolean.FALSE, Session.CLIENT_ACKNOWLEDGE);
 		// 4 通过session创建一个Destination对象
 		// 指的是一个客户端用来指定生产消息目标和消息的信息来源的对象,在p2p中Destination被称作是Queue,在pub/sub模式中 ,被称为topic
 		Destination destination = session.createQueue("queue1");
